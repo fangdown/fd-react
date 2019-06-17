@@ -1,0 +1,19 @@
+.size(@width; @height) {
+  width: @width;
+  height: @height;
+}
+
+.square(@size) {
+  .size(@size; @size);
+}
+
+.fullsize() {
+  .square(100%);
+}
+
+.overlay(@position: absolute) {
+  position: @position;
+  left: 0;
+  top: 0;
+  .fullsize();
+}

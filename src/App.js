@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import StudentList from './components/StudentList/StudentList'
+import DeptTree from './demo/deptTree'
+import SelectUser from './demo/selectUser'
+import HookDemo from './demo/hook'
+import ToastDemo from './components/Toast/demo'
+import './App.less';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={
+      text: '111'
+    }
+  }
+  render(){
+    const {text} = this.state
+    return (
+      <div className="App">
+        {/* <DeptTree></DeptTree>
+        <SelectUser cancelListener={this.cancelListener}></SelectUser>
+        <HookDemo /> */}
+        <ToastDemo />
+      </div>
+    )
+  }
+  
 }
 
 export default App;

@@ -1,0 +1,115 @@
+@import '../../variable.less';
+
+.@{prefix}-toast-root {
+  .box();
+  .box-sizing();
+
+  position: fixed;
+  left: 0;
+  top: @toast-root-top;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  z-index: @zindex-toast;
+  pointer-events: none;
+}
+
+.@{prefix}-toast {
+  .box();
+  .box-sizing();
+
+  position: relative;
+  max-width: @toast-max-width;
+  background-color: @background-color-base;
+  border-radius: @border-radius-base;
+  box-shadow: @toast-box-shadow;
+  pointer-events: all;
+  text-align: center;
+
+  &:not(:last-child) {
+    margin-bottom: @toast-space;
+  }
+
+  & > .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    border-top-left-radius: @border-radius-base;
+    border-bottom-left-radius: @border-radius-base;
+    color: #fff;
+    font-size: @toast-icon-font-size;
+    overflow: hidden;
+    .size(@toast-icon-width; 100%);
+  }
+
+  & > .msg {
+    margin: 0 @toast-icon-width;
+    line-height: @line-height-base;
+    padding: @toast-msg-padding;
+    font-size: @font-size-lg;
+    .box-sizing();
+  }
+
+  & > .@{prefix}-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    color: @border-color-base;
+    font-size: @font-size-x-lg;
+    .size(@toast-icon-width; 100%);
+  }
+}
+
+.@{prefix}-toast-info {
+  .toast-color(@info-color);
+}
+
+.@{prefix}-toast-success {
+  .toast-color(@success-color);
+}
+
+.@{prefix}-toast-warning {
+  .toast-color(@warning-color);
+}
+
+.@{prefix}-toast-error {
+  .toast-color(@danger-color);
+}
+
+.toast-color(@color) {
+  & > .icon {
+    background-color: @color;
+  }
+  & > .msg {
+    color: @color;
+  }
+}
+
+.@{prefix}-toast-enter {
+  animation: toastEnterAnimation ease-out 300ms;
+}
+
+.@{prefix}-toast-leave {
+  animation: toastLeaveAnimation ease-out 300ms;
+}
+
+@keyframes toastEnterAnimation {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toastLeaveAnimation {
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
